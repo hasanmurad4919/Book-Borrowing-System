@@ -1,0 +1,136 @@
+
+html {
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	min-width: 1300px;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #e9e9eb;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 25px;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+}
+
+.headContent {
+    background-color: #0f4c81;
+    height: 120px;
+    margin: 0;
+    padding: 20px 0 10px 0;
+}
+.logonew{
+	color: aliceblue;
+	background-image: url("/library/static/library/images/logo.png");
+
+}
+.logo {
+    background: url("images/BorrowBook2.png") no-repeat;
+    height: 120px;
+    margin: 0 0 0 30px;
+}
+
+.mainContent {
+	padding: 0 25px;
+}
+
+
+.notice{
+	font-size: 30px;
+	font-weight: bold;
+	margin: 30px 0 25px 0;
+}
+
+.mainContent div{
+	padding: 0 0 0 5px;
+
+}
+
+
+
+input{
+	outline-style: none;
+	border: 1px solid #cdcdce;
+	font-size: 18px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 3px 0 1px 5px;
+	margin: 8px 0;
+	width: 200px;
+}
+
+input::placeholder{
+	color: #919199;
+}
+
+input:focus{
+	border-color: #66afe6;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,.075),0 0 8px rgba(102,175,233,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+
+.btn{
+	color: seashell;
+	background-color: #0f4c81;
+	width: 400px;
+	height: 30px;
+}
+
+a:hover {
+	color: #248ce7;
+}
+
+a:link {
+	color: #0f4c81;
+}
+
+h3 {
+	color: #0f4c81;
+	margin: 30px 0 10px 0;
+}
+
+.rad{
+	margin: 0;
+	padding: 0;
+	width: 16px;
+}
+
+.searchBox{
+	width:600px;
+	font-size: 20px;
+}
+
+.btn-s{
+	width: 100px;
+}
+
+label {
+	font-size: 16px;
+}
+
+table th{
+	padding: 5px;
+	width: 250px;
+	font-weight: lighter;
+}
+
+.title th{
+	font-weight: bold;
+}
+
+.borrRul th{
+	width:514px;
+
+}
+
+.logOrReturn{
+	margin: 50px 0 ;
+}
+
+.notification.space-below{
+	margin-bottom: 20px;
+}
