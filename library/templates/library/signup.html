@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Library System - SIGNUP</title>
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'library/style.css' %}">
+
+</head>
+
+<body>  
+    <div class="headContent">
+        <div class="logonew">
+            <span>
+                <h1 style="color:aliceblue">Borrow Book</h1>
+            </span>
+            
+        </div>
+    </div>
+    
+    <div class="mainContent" style="padding-bottom:300px">
+        <p class="notice">Welcome to Borrow Book, Please sign up</p>
+        <div>
+            <form method="post" action="/library/signup/results/">
+                {% csrf_token %}
+                Account Name:<input type='text' name='new_name' maxlength='20' placeholder="only num and letters">
+                <br>
+                Password: <input type='password' name="new_pwd" maxlength='20' placeholder="only num and letters">
+                <br>
+                <input type="submit" value="Sign Up" class='btn'>
+            </form>
+            <a href="/library/">I have an account</a>
+            
+        </div>
+
+    </div>
+    <footer style="background-color: #0f4c81; height: 200px; padding-top: 20px;"  >
+        <div style="color:aliceblue">
+          <h5>Developed By Murad Hasan</h5>
+          <p>hasanmurad4919@gmail.com</p>
+          <p>Copyright © 2022 Murad Hasan</p>
+  
+        </div>
+  
+  
+      </footer> 
+
+</body>
+</html>
+
+
+

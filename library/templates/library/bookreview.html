@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Book Review</title>
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'library/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'library/custom.css' %}">
+        
+        
+
+</head>
+
+<body>  
+    
+    <div class="headContent">
+        <div class="logonew">
+
+            <span>
+                <span class="logOrReturn" >
+                    <a style="padding-left: 1400px;" href="/library/"><button class="btn">LOG OUT</button></a>
+                    
+                </span>
+                <a href="/library/home/{{acc.accoount_name}}/"><h1 style="color:aliceblue">Borrow Book</h1></a>
+                
+            </span>
+        </div>
+
+    </div>
+
+    
+    <div class="mainContent" >
+        
+    </div>
+
+    <main style="padding-bottom:300px">
+        <div>
+            <h3>
+                <p class="notice">Latest Reviews:</p>
+            </h3>
+    
+            {% if bookreview %}
+            <div>
+                {% for review in bookreview %}
+                <div>
+                    <hr>
+                    <h1> {{ review.content }}</h1>
+                    <strong><p>{{ review.book.title }}</p></strong>
+                    <p>  rated {{ review.stars }} of 5 by {{ review.account }}</p>
+                    <hr>
+                    <br>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>No reviews are available.</p>
+            {% endif %}
+        </div>
+    </main>
+
+
+
+    <footer style="background-color: #0f4c81; height: 200px; padding-top: 20px;"  >
+        <div style="color:aliceblue">
+          <h5>Developed By Murad Hasan</h5>
+          <p>hasanmurad4919@gmail.com</p>
+          <p>Copyright © 2022 Murad Hasan</p>
+  
+        </div>
+  
+  
+      </footer> 
+
+</body>
+</html>
+
+
+
+
+
+

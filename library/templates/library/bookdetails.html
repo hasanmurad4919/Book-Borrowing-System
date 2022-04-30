@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Library System - DETAILS</title>
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'library/style.css' %}">
+        
+
+</head>
+
+<body>  
+    <div class="headContent">
+        <div class="logonew">
+
+            <span>
+                <span class="logOrReturn" >
+                    <a style="padding-left: 1400px;" href="/library/"><button class="btn">LOG OUT</button></a>
+                    
+                </span>
+                <a href="/library/home/{{acc.accoount_name}}/"><h1 style="color:aliceblue">Borrow Book</h1></a>
+                
+            </span>
+        </div>
+    </div>
+    
+    <div class="mainContent" style="padding-bottom:300px">
+        <div>
+            <h3>
+                <p class="notice">{{book.title}}</p>
+            </h3>
+        </div>
+
+
+        <div class="bookInfo">
+            <ul>
+                <li>ISBN: {{book.isbn}}</li>
+                <li>Author: {{book.author}}</li>
+                <li>Publisher: {{book.publisher}}</li>     
+            </ul> 
+        </div>
+
+        <div class="bookIns">
+            {% if book_ins %}
+            <div>
+                <table border="1">
+                    <tr class="title">
+                        <th>ID</th>
+                        <th>Imprint</th>
+                        <th>Location</th>
+                        <th>Loan Status</th>
+                        <th></th>
+                    </tr>
+                    {% for bis in book_ins %}
+                    <tr>
+                        <th>{{bis.id}}</th>
+                        <th>{{bis.imprint}}</th>
+                        <th>{{bis.location}}</th>
+                        {% if bis.loan_status == 'O' %}
+                            <th>On Loan</th>
+                            <th></th>
+                        {% else %}
+                            <th>Available</th>
+                            <th>
+                                <a href='/library/home/{{acc.accoount_name}}/searchResult/book_id={{book.id}}/bookins_id={{bis.id}}/'>
+                                    borrow
+                                </a>
+                            </th>     
+                        {% endif %} 
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% else %}
+            <div>
+                <p>Stay Tuned</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <br>
+        <br>
+    
+
+                    
+
+    </div>
+    <footer style="background-color: #0f4c81; height: 200px; padding-top: 20px;"  >
+        <div style="color:aliceblue">
+          <h5>Developed By Murad Hasan</h5>
+          <p>hasanmurad4919@gmail.com</p>
+          <p>Copyright © 2022 Murad Hasan</p>
+  
+        </div>
+  
+  
+      </footer> 
+
+</body>
+</html>
+
+
+
+
+
+
+
+

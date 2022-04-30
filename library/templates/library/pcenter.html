@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Library System - PERSONAL CENTER</title>
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'library/style.css' %}">
+        
+
+</head>
+
+<body>  
+    
+    <div class="headContent">
+        <div class="logonew">
+
+            <span>
+                <span class="logOrReturn" >
+                    <a style="padding-left: 1400px;" href="/library/"><button class="btn">LOG OUT</button></a>
+                    
+                </span>
+                <a href="/library/home/{{acc.accoount_name}}/"><h1 style="color:aliceblue">Borrow Book</h1></a>
+                
+            </span>
+        </div>
+
+    </div>
+
+    
+    <div class="mainContent" style="padding-bottom:300px">
+        <div><p class="notice">Welcome to Dashboard</p></div>
+
+
+        <div class="searchBar"> 
+            <a style="padding-left: 00px;" href="/library/home/{{acc.accoount_name}}/bookreview/"><button class="btn">Book Reviews</button></a>
+            <form method="post" action="/library/home/{{acc.accoount_name}}/searchResult/">
+
+            <input type="submit"  value="Show All Books" class="btn btn-l"  >
+            
+                {% csrf_token %}
+                <h3>I want to Find Books</h3>
+                    <div>
+                    <input type="radio" name='choice' id='s-isbn' value='i' class="rad">
+                    <label for='s-isbn'>ISBN</label>
+                    <input type="radio" name='choice' id='s-title' value='t' class="rad">
+                    <label for='s-title'>TITLE</label>
+                    <input type="radio" name='choice' id='s-author' value='a' class="rad">
+                    <label for='s-author'>AUTHOR</label>
+                    </div>
+                    <div>
+                    <input type="search" name='s' placeholder="search for book" class="searchBox">
+                    <input type="submit" value="search" class="btn btn-s">
+                    </div>
+            </form>
+        </div>
+
+        <div class="personalInfo">    
+            <h3>PERSONAL INFORMATION</h3>
+            <div>
+                <table border='1'>
+                    <tr class="title">
+                        <th>Account ID</th>
+                        <th>Account Name</th>
+                        <th>Account Status</th>
+                        <th>Register time</th>
+                        <th>Keeping Num</th>
+                        <th>Unpaid Fine</th>
+                    </tr>
+                    <tr>
+                        <th>{{acc.id}}</th>
+                        <th>{{acc.accoount_name}}</th>
+                        {% if acc.account_satus == 'CP' %}
+                            <th>Check Pending</th>
+                        {% elif acc.account_satus == 'N' %}
+                            <th>Normal</th>
+                        {% elif acc.account_satus == 'F' %}
+                            <th>Freeze</li>
+                        {% else %}
+                            <th>Cancel</th>
+                        {% endif %}
+                        <th>{{acc.register_time}}</th>
+                        <th>{{acc.keeping_num}}</th>
+                        <th>{{acc.current_fine}}</th>
+                    </tr> 
+                </table>
+            </div>
+        </div>
+
+        <div class="borrRul">   
+            <h3>BORROW RULES</h3>
+            <div>
+                <table border='1'>
+                    <tr class="title">
+                        <th>Keeping Period (days)</th>
+                        <th>Fine (per book per day)</th>
+                        <th>Quota</th>
+                    </tr>
+                    <tr>
+                        <th>{{acc.bor_rules.bor_period}}</th>
+                        <th>{{acc.bor_rules.day_fine}} Tk</th>
+                        <th>{{acc.bor_rules.quota}}</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+     
+
+        <div>    
+            <h3>KEEPING LIST</h3>
+            <div>
+            {% if keeping_list %}
+                <table border='1'>
+                    <tr class="title">
+                        <th>Borrow ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Borrow Time</th>
+                        <th>Return Date</th>
+                        <th>Fine</th>
+                    </tr>
+                {% for keep in keeping_list %}
+                        <tr>
+                            <th>{{keep.id}}</th>
+                            <th>{{keep.bookins.book.title}}</th>
+                            <th>{{keep.bookins.book.author}}</th>
+                            <th>{{keep.bor_time}}</th>
+                            <th>{{keep.ret_date}}</th>
+                            <th>{{keep.total_fine}}</th>
+                        </tr> 
+                    {% endfor %}
+                </table>
+            {% else %}
+                <a>You don't keep any book.</a>
+            {% endif %}
+            </div>
+        </div>
+
+        <div>
+            <h3>RETURNED LIST</h3>
+            <div>
+            {% if returned_list %}
+                <table border='1'>
+                    <tr class="title">
+                        <th>Borrow ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Location</th>
+                        <th>Borrow Time</th>
+                        <th>Fine</th>
+                    </tr>
+                {% for ret in returned_list %}
+                        <tr>
+                            <th>{{ret.id}}</th>
+                            <th>{{ret.bookins.book.title}}</th>
+                            <th>{{ret.bookins.book.author}}</th>
+                            <th>{{ret.bookins.location}}</th>
+                            <th>{{ret.bor_time}}</th>
+                            <th>{{ret.f}}</th>
+                        </tr> 
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p>You haven't return any book.</p>
+            {% endif %}
+            </div>
+        </div>
+
+
+        
+
+    </div>
+    <footer style="background-color: #0f4c81; height: 200px; padding-top: 20px;"  >
+        <div style="color:aliceblue">
+          <h5>Developed By Murad Hasan</h5>
+          <p>hasanmurad4919@gmail.com</p>
+          <p>Copyright © 2022 Murad Hasan</p>
+  
+        </div>
+  
+  
+      </footer> 
+
+</body>
+</html>
+
+
+
+
+
+

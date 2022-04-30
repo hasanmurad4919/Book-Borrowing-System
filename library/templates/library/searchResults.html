@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Library System - SEARCH RESULTS</title>
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'library/style.css' %}">
+
+</head>
+
+<body>  
+    <div class="headContent">
+        <div class="logonew">
+
+            <span>
+                <span class="logOrReturn" >
+                    <a style="padding-left: 1400px;" href="/library/"><button class="btn">LOG OUT</button></a>
+                    
+                </span>
+                <a href="/library/home/{{acc.accoount_name}}/"><h1 style="color:aliceblue">Borrow Book</h1></a>
+                
+            </span>
+        </div>
+    </div>
+    
+    <div class="mainContent" style="padding-bottom:300px">
+        <div>
+            <p class="notice">
+                {% if choice == 'i' %}
+                    You are searching for book by ISBN including the key word: "{{s}}"
+                {% elif choice == 'a' %}
+                    You are searching for book by AUTHOR including the key word: "{{s}}" 
+                {% elif s == '' %}
+                    Showing All Available Books 
+                {% else %}
+                    You are searching for book by TITLE including the key word: "{{s}}"    
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="searchResult">
+            {% if book_list %}
+            <div>
+                <table border='1'>
+                    <tr class="title">
+                        <th>ISBN</th>
+                        <th>TITLE</th>
+                        <th>AUTHOR</th>
+                        <th>STORAGE</th>
+                        <th>AVAILABLE</th>
+                        <th>DETAILS</th>
+                    </tr>
+                    {% for book in book_list %}
+                        <tr>
+                            <th>{{book.isbn}}</th>
+                            <th>{{book.title}}</th>
+                            <th>{{book.author}}</th>
+                            <th>{{book.storage}}</th>
+                            <th>{{book.avail}}</th>
+                            <th><a href="/library/home/{{acc.accoount_name}}/searchResult/book_id={{book.id}}/">
+                                details
+                            </a></th>
+                        </tr> 
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="logOrReturn">
+            Nothing You Want? <a href="/library/home/{{acc.accoount_name}}/">RETURN</a>
+            </div>
+            {% else %}
+            <div>
+                <p>Sorry. We didn't find the book u want</p>
+                <p>Please <a href="/library/home/{{acc.accoount_name}}/">RETURN</a> to search for others</p>    
+            </div>
+            {% endif %}     
+        </div>
+    </div>
+    <footer style="background-color: #0f4c81; height: 200px; padding-top: 20px;"  >
+        <div style="color:aliceblue">
+          <h5>Developed By Murad Hasan</h5>
+          <p>hasanmurad4919@gmail.com</p>
+          <p>Copyright © 2022 Murad Hasan</p>
+  
+        </div>
+  
+  
+      </footer> 
+
+</body>
+</html>
+
+
+
+
+

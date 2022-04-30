@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Library System</title>
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'library/style.css' %}">
+
+</head>
+
+<body>  
+    <div class="headContent">
+        <div class="logonew">
+
+            <span>
+                <span class="logOrReturn" >
+                    <a style="padding-left: 1400px;" href="/library/"><button class="btn">LOG OUT</button></a>
+                    
+                </span>
+                <a href="/library/home/{{acc.accoount_name}}/"><h1 style="color:aliceblue">Borrow Book</h1></a>
+                
+            </span>
+        </div>
+    </div>
+    
+    <div class="mainContent" style="padding-bottom:300px">
+        {% if infos %}
+            <p class="notice">{{infos}}</p>
+            <a href='/library/signup/'>SIGN UP AGAIN</a>
+        {% else %}
+            <p class="notice">The account created successfully.</p>
+            Please back to <a href="/library/">HOMEPAGE</a> to log in.
+        {% endif %}
+
+    </div>
+
+    <footer style="background-color: #0f4c81; height: 200px; padding-top: 20px;"  >
+        <div style="color:aliceblue">
+          <h5>Developed By Murad Hasan</h5>
+          <p>hasanmurad4919@gmail.com</p>
+          <p>Copyright © 2022 Murad Hasan</p>
+  
+        </div>
+  
+  
+      </footer> 
+
+</body>
+</html>
